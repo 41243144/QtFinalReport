@@ -77,7 +77,7 @@
 ```
 
 ---
-##參考
+## 參考
 [QT項目-天氣預測系統](https://blog.csdn.net/MOON_YZM/article/details/130720216)
 
 ---
