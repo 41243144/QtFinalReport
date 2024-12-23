@@ -24,7 +24,7 @@
 | command | **指令** |
 | wateringTime | **澆水時間** |
 | lightStart | **植物燈開啟時間** |
-| lightEnd | **植物燈關閉時間** |
+| duration | **植物燈開燈持續時間(分鐘)** |
 
 回傳範例:
 ```json
@@ -33,19 +33,38 @@
     "command" : "getCurrentData",
     "wateringTime" : "12:00",
     "lightStart" : "20:00",
-    "lightStart" : "08:00"
+    "duration" : "120"
 }
 ```
 
 ---
 
 ##### `updateData` : 更新澆水及植物燈開關時間
+| 發送  | **內容** |
+| :--: | :--: |
+| id | **設備id** |
+| command | **指令** |
+| wateringTime | **澆水時間** |
+| lightStart | **植物燈開啟時間** |
+| duration | **植物燈開燈持續時間(分鐘)** |
+
 | 回傳  | **內容** |
 | :--: | :--: |
 | id | **設備id** |
 | command | **指令** |
 | status | **狀態** |
 | error | **錯誤訊息** |
+
+發送範例:
+```json
+{
+    "id" : "test-0001",
+    "command" : "getCurrentData",
+    "wateringTime" : "12:00",
+    "lightStart" : "20:00",
+    "duration" : "120"
+}
+```
 
 回傳範例:
 ```json

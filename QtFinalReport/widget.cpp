@@ -27,6 +27,9 @@ Widget::Widget(QWidget *parent)
     mqttClient->setHostname("broker.hivemq.com");  // 固定使用的 Broker
     mqttClient->setPort(1883);                     // 固定使用端口
 
+    mqttClient->setUsername("wenwen");
+    mqttClient->setPassword("test");
+
     // 訊號槽連接
     connect(mqttClient, &QMqttClient::connected, this, [=]() {
         statusLabel->setText("Connected to Broker");
@@ -82,16 +85,16 @@ void Widget::onMessageReceived(const QByteArray &message, const QMqttTopicName &
             if(command == "getCurrentData"){
             }
             QString wateringTime = jsonObj["wateringTime"].toString();
-            QString lightStart1 = jsonObj["lightStart1"].toString();
-            QString lightStart2 = jsonObj["lightStart2"].toString();
+            QString lightStart = jsonObj["lightStart"].toString();
+            QString duration = jsonObj["duration"].toString();
 
             // 顯示解析結果
             logEdit->appendPlainText("Parsed JSON Data:");
             logEdit->appendPlainText("ID: " + id);
             logEdit->appendPlainText("Command: " + command);
             logEdit->appendPlainText("Watering Time: " + wateringTime);
-            logEdit->appendPlainText("Light Start 1: " + lightStart1);
-            logEdit->appendPlainText("Light Start 2: " + lightStart2);
+            logEdit->appendPlainText("Light Start 1: " + lightStart);
+            logEdit->appendPlainText("Light Start 2: " + duration);
         } else {
             logEdit->appendPlainText("Invalid JSON received.");
         }
