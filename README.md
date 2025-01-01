@@ -31,6 +31,7 @@
     "id" : "test-0001",
     "command" : "getCurrentData",
 }
+```
 回傳範例:
 ```json
 {
