@@ -21,16 +21,20 @@
 | 回傳  | **內容** |
 | :--: | :--: |
 | id | **設備id** |
-| command | **指令** |
 | wateringTime | **澆水時間** |
 | lightStart | **植物燈開啟時間** |
 | duration | **植物燈開燈持續時間(分鐘)** |
 
-回傳範例:
+發送格式:
 ```json
 {
     "id" : "test-0001",
     "command" : "getCurrentData",
+}
+回傳範例:
+```json
+{
+    "id" : "test-0001",
     "wateringTime" : "12:00",
     "lightStart" : "20:00",
     "duration" : "120"
@@ -51,7 +55,6 @@
 | 回傳  | **內容** |
 | :--: | :--: |
 | id | **設備id** |
-| command | **指令** |
 | status | **狀態** |
 | error | **錯誤訊息** |
 
@@ -59,7 +62,7 @@
 ```json
 {
     "id" : "test-0001",
-    "command" : "getCurrentData",
+    "command" : "updateData",
     "wateringTime" : "12:00",
     "lightStart" : "20:00",
     "duration" : "120"
@@ -70,8 +73,7 @@
 ```json
 {
     "id" : "test-0001",
-    "command" : "updateData",
-    "status" : "200",
+    "status" : "success",
     "error" : ""
 }
 ```
@@ -89,9 +91,8 @@
 ```json
 {
     "id" : "test-0001",
-    "command" : "realTimeIrrigation",
-    "status" : "500",
-    "error" : "The command is currently being implemented"
+    "status" : "error",
+    "error" : "目前正在澆水中"
 }
 ```
 
@@ -99,7 +100,7 @@
 ---
 ## 完成進度
 
-- [ ] GUI介面
-- [ ] MQTT傳輸
-- [ ] Esp32控制
-- [ ] 硬體設備
+- [x] GUI介面
+- [x] MQTT傳輸
+- [x] Esp32控制
+- [x] 硬體設備
