@@ -1,3 +1,47 @@
+/*
+    本專案使用 ESP32 控制植物澆水和照明，並且透過 MQTT 通訊協議與外部服務器進行通訊。
+        ArduinoJson，該函式庫可以幫助我們處理 JSON 資料。
+        PubSubClient，該函式庫可以幫助我們與 MQTT 伺服器進行通訊。
+    本專案的目標是透過 MQTT 通訊協議，與外部服務器進行通訊，並且根據外部服務器的指令，控制植物的澆水和照明。
+
+    本專案的主要功能如下：
+        1. 透過 MQTT 通訊協議，與外部服務器進行通訊。
+        2. 根據外部服務器的指令，控制植物的澆水和照明。
+        3. 透過 NTP 時間同步，獲取當前的時間。
+        4. 透過 WiFi 連接到網際網路。
+
+    本專案的硬體設備如下：
+        1. ESP32 開發板
+        2. L298N 馬達驅動器
+        3. 水泵
+        4. LED 燈
+        5. 水位感測器
+    
+    本專案的 MQTT 訊息格式如下：
+        {
+            "id": "test-0001",
+            "command": "getCurrentData"
+        }
+        {
+            "id": "test-0001",
+            "command": "updateData",
+            "wateringTime": "08:00",
+            "lightStart": "08:00",
+            "duration": 120
+        }
+        {
+            "id": "test-0001",
+            "command": "realTimeIrrigation"
+        }
+    
+
+    本專案的硬體連接如下：
+        1. 將 L298N 馬達驅動器的 IN1 和 IN2 腳分別連接到 ESP32 開發板的 19 和 21 腳。
+        2. 將水泵的正極連接到 L298N 馬達驅動器的 OUT1 腳，將水泵的負極連接到 L298N 馬達驅動器的 GND 腳。
+        3. 將 LED 燈的正極連接到 ESP32 開發板的 5 腳，將 LED 燈的負極連接到 ESP32 開發板的 GND 腳。
+        4. 將水位感測器的 OUT 腳連接到 ESP32 開發板的 13 腳。
+
+*/
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
@@ -232,11 +276,11 @@ void offWater() {
 
 // 初始化 Wi-Fi 和 MQTT
 void setup() {
-     pinMode(L298N_1,OUTPUT);
-     pinMode(L298N_2,OUTPUT);
-     pinMode(Light,OUTPUT);
-     pinMode(WaterSensor,INPUT);
-      digitalWrite(L298N_1, LOW);
+    pinMode(L298N_1,OUTPUT);
+    pinMode(L298N_2,OUTPUT);
+    pinMode(Light,OUTPUT);
+    pinMode(WaterSensor,INPUT);
+    digitalWrite(L298N_1, LOW);
     digitalWrite(L298N_2, LOW);
 
     Serial.begin(115200);
