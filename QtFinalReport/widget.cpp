@@ -1,12 +1,5 @@
 ﻿#include "widget.h"
 
-
-/*目前已知
- * UI光照持續時間無法更改
- * UI時間器無法設為回傳的時間
- */
-
-
 Widget::Widget(QWidget *parent)
     : QWidget(parent), mqttClient(new QMqttClient(this))
 {
