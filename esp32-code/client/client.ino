@@ -47,8 +47,8 @@
 #include <ArduinoJson.h>
 
 // WiFi 帳密
-const char *ssid = "TOTOLINK_LR350"; // Enter your Wi-Fi name
-const char *password = "940414881027";  // Enter Wi-Fi password
+const char *ssid = "TOTOLINK_LR350"; // Wi-Fi name
+const char *password = "940414881027";  // Wi-Fi password
 
 
 // NTP 時間同步變數
